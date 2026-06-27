@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELITE FF ARENA</title>
+    <script src="https://tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0D1117',
+                        primary: '#FF6B00',
+                    },
+                    boxShadow: {
+                        'glow': '0 0 15px rgba(255, 107, 0, 0.6)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glow-effect {
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-[#0D1117] text-white min-h-screen p-4 flex flex-col items-center font-sans">
+
+    <!-- Header -->
+    <header class="text-center my-6">
+        <h1 class="text-3xl font-extrabold text-[#FF6B00] tracking-wider uppercase drop-shadow-[0_0_10px_rgba(255,107,0,0.5)]">
+            ELITE FF ARENA
+        </h1>
+        <p class="text-gray-400 text-sm mt-1">Squad Tournament</p>
+    </header>
+
+    <!-- Tournament Details Card -->
+    <div class="w-full max-w-md bg-[#161B22] border border-[#FF6B00]/30 rounded-xl p-5 mb-6 glow-effect">
+        <div class="grid grid-cols-2 gap-4 text-center">
+            <div class="bg-[#21262D] p-2 rounded">
+                <p class="text-xs text-gray-400">Entry Fee</p>
+                <p class="text-xl font-bold text-[#FF6B00]">₹49 Only</p>
+            </div>
+            <div class="bg-[#21262D] p-2 rounded">
+                <p class="text-xs text-gray-400">Mode</p>
+                <p class="text-xl font-bold">Squad</p>
+            </div>
+            <div class="bg-[#21262D] p-2 rounded">
+                <p class="text-xs text-gray-400">Map</p>
+                <p class="text-xl font-bold">Bermuda</p>
+            </div>
+            <div class="bg-[#21262D] p-2 rounded">
+                <p class="text-xs text-gray-400">Time</p>
+                <p class="text-xl font-bold text-green-400">9:00 PM</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- UPI QR Code Section -->
+    <div class="w-full max-w-md bg-[#161B22] border border-gray-800 rounded-xl p-5 mb-6 flex flex-col items-center">
+        <h2 class="text-lg font-bold mb-3 text-[#FF6B00]">Step 1: Scan & Pay ₹49</h2>
+        <div class="bg-white p-2 rounded-lg mb-3">
+            <!-- QR Link generation using open API -->
+            <img src="https://qrserver.com" alt="UPI QR" class="w-36 h-36" />
+        </div>
+        <p class="text-sm font-mono bg-[#21262D] px-3 py-1 rounded select-all border border-gray-700">
+            UPI ID: tera@paytm
+        </p>
+        <p class="text-xs text-gray-400 mt-2 text-center">
+            Pay karne ke baad Transaction ID/UTR copy karein aur screenshot lein.
+        </p>
+    </div>
+
+    <!-- Redirect Button Form Container -->
+    <div class="w-full max-w-md bg-[#161B22] border border-gray-800 rounded-xl p-5 text-center space-y-4">
+        <h2 class="text-lg font-bold text-[#FF6B00]">Step 2: Submit Details</h2>
+        <p class="text-sm text-gray-300">
+            Niche diye gaye button par click karke apni entries aur screenshot submit karein.
+        </p>
+        
+        <!-- Replace YOUR_GOOGLE_FORM_LINK_HERE with your real google form link -->
+        <a href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="block w-full bg-[#FF6B00] hover:bg-orange-600 transition font-bold py-3 rounded-lg text-white uppercase tracking-wider text-center glow-effect active:scale-[0.98]">
+            Fill Registration Form
+        </a>
+    </div>
+
+    <!-- Floating WhatsApp Action -->
+    <a href="https://wa.me." target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all font-bold text-xs flex items-center gap-2">
+        💬 Send Screenshot
+    </a>
+
+</body>
+</html>
