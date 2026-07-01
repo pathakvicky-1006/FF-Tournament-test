@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VideoShop - Buy & Watch</title>
+<style>
+  :root{--bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--accent:#22d3ee}
+  *{box-sizing:border-box;font-family:'Poppins',sans-serif}
+  body{margin:0;background:var(--bg);color:var(--text)}
+  header{padding:20px;text-align:center;background:var(--card)}
+  header h1{margin:0;color:var(--accent)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;padding:24px}
+  .card{background:var(--card);border-radius:16px;overflow:hidden}
+  .card video, .card img{width:100%;height:180px;object-fit:cover}
+  .card-body{padding:16px}
+  .card h3{margin:0 0 6px;font-size:18px}
+  .desc{font-size:13px;color:#94a3b8;margin-bottom:10px}
+  .price{font-weight:700;color:var(--accent);font-size:18px}
+  .buyBtn{width:100%;margin-top:10px;padding:10px;border:0;border-radius:10px;background:var(--accent);color:#000;font-weight:700;cursor:pointer}
+  .buyBtn:disabled{background:#334155;color:#94a3b8;cursor:not-allowed}
+  /* Modal */
+  #modal{position:fixed;inset:0;background:#000d;display:none;align-items:center;justify-content:center;z-index:10}
+  #modal.active{display:flex}
+  #modalBox{background:var(--card);padding:24px;border-radius:16px;max-width:400px;text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>VideoShop 🎬</h1>
+  <p>Premium Videos, Ek Click Me</p>
+</header>
+
+<div class="grid" id="videoGrid"></div>
+
+<div id="modal">
+  <div id="modalBox">
+    <h2 id="modalTitle"></h2>
+    <p>₹<span id="modalPrice"></span> Pay karke unlock karein?</p>
+    <button id="payBtn" style="padding:10px 20px;background:var(--accent);border:0;border-radius:8px;font-weight:700;cursor:pointer">Pay ₹</button>
+    <button id="closeBtn" style="padding:10px 20px;background:#334155;border:0;border-radius:8px;margin-left:8px;cursor:pointer">Cancel</button>
+  </div>
+</div>
+
+<script>
+const videos = [
+  {id:1, title:"AI se Shorts Banao", price:149, desc:"1 ghante me viral shorts", preview:"https://www.w3schools.com/html/mov_bbb.mp4", full:"https://www.w3schools.com/html/movie.mp4", locked:true},
+  {id:2, title:"Mahadev Status Pack 4K", price:99, desc:"100+ Shiv Bhakti Clips", preview:"https://www.w3schools.com/html/mov_bbb.mp4", full:"https://www.w3schools.com/html/movie.mp4", locked:true},
+  {id:3, title:"Python 0 to Hero", price:399, desc:"Project based course", preview:"https://www.w3schools.com/html/mov_bbb.mp4", full:"https://www.w3schools.com/html/movie.mp4", locked:true}
+];
+
+const grid = document.getElementById('videoGrid');
+const modal = document.getElementById('modal');
+
+function render(){
+  grid.innerHTML = videos.map(v=>`
+  <div class="card">
+    <video src="${v.preview}" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+    <div class="card-body">
+      <h3>${v.title}</h3>
+      <p class="desc">${v.desc}</p>
+      <div class="price">₹${v.price}</div>
+      <button class="buyBtn" ${!v.locked?'disabled':''} onclick="openBuy(${v.id})">
+        ${v.locked ? 'Buy Now' : 'Watch Full Video'}
+      </button>
+    </div>
+  </div>`).join('');
+}
+
+function openBuy(id){
+  const v = videos.find(x=>x.id===id);
+  if(!v.locked){ 
+    // Already bought, play full video
+    alert('Full Video: '+v.full); 
+    return;
+  }
+  document.getElementById('modalTitle').innerText = v.title;
+  document.getElementById('modalPrice').innerText = v.price;
+  document.getElementById('payBtn').innerText = 'Pay ₹'+v.price;
+  document.getElementById('payBtn').onclick = ()=>buyVideo(id);
+  modal.classList.add('active');
+}
+
+function buyVideo(id){
+  const v = videos.find(x=>x.id===id);
+  alert('Payment Success! Ab full video unlock ho gaya ✅');
+  v.locked = false; // Yaha DB me save hoga real me
+  modal.classList.remove('active');
+  render();
+}
+
+document.getElementById('closeBtn').onclick = ()=>modal.classList.remove('active');
+render();
+</script>
+</body>
+</html>
