@@ -1,119 +1,567 @@
-<!DOCTYPE html>
-<html lang="hi">
+<!<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ClipBazaar Pro - Royalty Free 4K Clips</title>
+<title>StreamVault - Premium Video Courses</title>
 <style>
-  :root{--bg:#0a0f1e;--card:#111827cc;--text:#f1f5f9;--accent:#25D366;--muted:#94a3b8}
-  *{box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--text);background-image:radial-gradient(circle at 10% 20%, #1e293b 0%, transparent 40%)}
-  header{display:flex;justify-content:space-between;align-items:center;padding:16px 5%;background:var(--card);backdrop-filter:blur(10px);position:sticky;top:0;z-index:10;border-bottom:1px solid #1f2937}
-  header h1{margin:0;color:var(--accent);font-size:22px}
-  nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:14px}
-  .hero{text-align:center;padding:80px 5% 40px}
-  .hero h2{font-size:42px;margin:0;line-height:1.2}
-  .hero p{color:var(--muted);max-width:600px;margin:16px auto;font-size:16px}
-  .btn-primary{background:var(--accent);color:#000;border:0;padding:12px 24px;border-radius:10px;font-weight:700;cursor:pointer;font-size:15px}
-  .badges{display:flex;gap:20px;justify-content:center;margin-top:24px;flex-wrap:wrap}
-  .badge{background:var(--card);padding:8px 14px;border-radius:20px;font-size:12px;border:1px solid #1f2937}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;padding:40px 5%}
-  .card{background:var(--card);backdrop-filter:blur(10px);border-radius:16px;overflow:hidden;border:1px solid #1f2937;transition:.3s}
-  .card:hover{transform:translateY(-6px);border-color:var(--accent)}
-  .card video{width:100%;height:160px;object-fit:cover;background:#000}
-  .card-body{padding:14px}
-  .card h3{margin:0 0 4px;font-size:15px}
-  .meta{font-size:12px;color:var(--muted);margin-bottom:10px;display:flex;justify-content:space-between}
-  .price{font-weight:700;color:var(--accent);font-size:18px}
-  .buyBtn{width:100%;margin-top:8px;padding:10px;border:0;border-radius:8px;background:var(--accent);color:#000;font-weight:700;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px}
-  .section{padding:40px 5%}
-  .section h3{text-align:center;font-size:28px;margin-bottom:20px}
-  .testimonials{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-  .testi{background:var(--card);padding:16px;border-radius:12px;border:1px solid #1f2937;font-size:14px}
-  .testi b{color:var(--accent)}
-  footer{text-align:center;padding:24px;color:var(--muted);border-top:1px solid #1f2937;font-size:12px}
-  footer a{color:var(--muted);margin:0 8px;text-decoration:none}
-  #loader{position:fixed;inset:0;background:var(--bg);display:grid;place-items:center;z-index:99}
-  .spin{width:40px;height:40px;border:3px solid #334155;border-top:3px solid var(--accent);border-radius:50%;animation:spin 1s linear infinite}
-  @keyframes spin{to{transform:rotate(360deg)}}
+:root {
+  --bg: #0f0f0f;
+  --bg-elevated: #1a1a1a;
+  --bg-card: #242424;
+  --border: #333;
+  --text: #fff;
+  --text-muted: #999;
+  --accent: #e50914;
+  --accent-hover: #f40612;
+  --green: #46d369;
+  --yellow: #ffd700;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.5; -webkit-font-smoothing:antialiased; }
+
+/* Header */
+.header { position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; padding:0 4%; height:68px; background:linear-gradient(180deg,rgba(0,0,0,0.7) 10%,transparent); transition:background 0.3s; }
+.header.scrolled { background:var(--bg); border-bottom:1px solid var(--border); }
+.logo { font-size:28px; font-weight:900; color:var(--accent); letter-spacing:-1px; }
+.nav { display:flex; gap:24px; }
+.nav a { color:var(--text); text-decoration:none; font-size:14px; font-weight:500; transition:opacity 0.2s; }
+.nav a:hover { opacity:0.7; }
+.header-right { display:flex; align-items:center; gap:16px; }
+.search-box { position:relative; }
+.search-box input { width:0; padding:8px 32px 8px 12px; background:transparent; border:1px solid transparent; border-radius:4px; color:var(--text); font-size:14px; transition:all 0.3s; cursor:pointer; }
+.search-box.active input { width:240px; background:rgba(0,0,0,0.75); border-color:var(--text); }
+.search-box button { position:absolute; right:8px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--text); font-size:16px; cursor:pointer; }
+.cart-btn, .user-btn { background:none; border:none; color:var(--text); font-size:20px; cursor:pointer; position:relative; }
+.cart-count { position:absolute; top:-8px; right:-8px; background:var(--accent); color:var(--text); font-size:10px; font-weight:700; width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+
+/* Hero */
+.hero { position:relative; height:80vh; min-height:500px; display:flex; align-items:center; padding:0 4%; background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%); overflow:hidden; }
+.hero::before { content:''; position:absolute; inset:0; background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></svg>'); background-size:60px; opacity:0.5; }
+.hero-content { position:relative; z-index:2; max-width:600px; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; padding:6px 14px; background:rgba(229,9,20,0.2); border:1px solid var(--accent); border-radius:4px; font-size:12px; font-weight:700; color:var(--accent); margin-bottom:20px; text-transform:uppercase; letter-spacing:1px; }
+.hero h1 { font-size:56px; font-weight:900; line-height:1.1; margin-bottom:16px; text-shadow:0 2px 20px rgba(0,0,0,0.5); }
+.hero p { font-size:18px; color:var(--text-muted); margin-bottom:28px; line-height:1.6; }
+.hero-buttons { display:flex; gap:12px; flex-wrap:wrap; }
+.btn { display:inline-flex; align-items:center; gap:8px; padding:12px 28px; border-radius:4px; font-size:16px; font-weight:700; cursor:pointer; border:none; transition:all 0.2s; }
+.btn-primary { background:var(--text); color:var(--bg); }
+.btn-primary:hover { background:rgba(255,255,255,0.9); }
+.btn-secondary { background:rgba(255,255,255,0.1); color:var(--text); backdrop-filter:blur(10px); }
+.btn-secondary:hover { background:rgba(255,255,255,0.2); }
+.btn-accent { background:var(--accent); color:var(--text); }
+.btn-accent:hover { background:var(--accent-hover); }
+
+/* Sections */
+.section { padding:40px 4%; }
+.section-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+.section-title { font-size:20px; font-weight:700; }
+.see-all { color:var(--accent); text-decoration:none; font-size:14px; font-weight:600; }
+.see-all:hover { text-decoration:underline; }
+
+/* Video Grid */
+.video-row { display:flex; gap:8px; overflow-x:auto; padding-bottom:20px; scroll-behavior:smooth; scrollbar-width:none; }
+.video-row::-webkit-scrollbar { display:none; }
+.video-card { flex:0 0 auto; width:280px; cursor:pointer; transition:transform 0.3s, z-index 0s; position:relative; }
+.video-card:hover { transform:scale(1.05); z-index:10; }
+.video-thumb { position:relative; width:100%; height:158px; background:linear-gradient(135deg,#667eea,#764ba2); border-radius:4px; overflow:hidden; }
+.video-thumb .play-icon { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:48px; opacity:0; transition:opacity 0.3s; background:rgba(0,0,0,0.3); }
+.video-card:hover .play-icon { opacity:1; }
+.video-duration { position:absolute; bottom:8px; right:8px; background:rgba(0,0,0,0.8); padding:2px 6px; border-radius:2px; font-size:12px; font-weight:600; }
+.video-info { padding:12px 0; }
+.video-title { font-size:14px; font-weight:600; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.video-meta { display:flex; align-items:center; gap:8px; font-size:12px; color:var(--text-muted); }
+.video-rating { color:var(--yellow); }
+.video-price { color:var(--green); font-weight:700; font-size:14px; margin-top:4px; }
+
+/* Featured Grid */
+.featured-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:20px; }
+.featured-card { background:var(--bg-card); border-radius:8px; overflow:hidden; border:1px solid var(--border); transition:all 0.3s; cursor:pointer; }
+.featured-card:hover { border-color:var(--accent); transform:translateY(-4px); box-shadow:0 10px 40px rgba(229,9,20,0.1); }
+.featured-thumb { width:100%; height:150px; background:linear-gradient(135deg,#f093fb,#f5576c); position:relative; }
+.featured-badge { position:absolute; top:12px; left:12px; padding:4px 10px; background:var(--accent); border-radius:4px; font-size:11px; font-weight:700; text-transform:uppercase; }
+.featured-body { padding:16px; }
+.featured-body h3 { font-size:16px; font-weight:700; margin-bottom:6px; }
+.featured-body p { font-size:13px; color:var(--text-muted); margin-bottom:12px; line-height:1.5; }
+.featured-footer { display:flex; justify-content:space-between; align-items:center; }
+.featured-price { font-size:20px; font-weight:800; color:var(--green); }
+.featured-price span { font-size:13px; color:var(--text-muted); text-decoration:line-through; margin-left:6px; }
+.featured-rating { display:flex; align-items:center; gap:4px; font-size:13px; color:var(--yellow); }
+
+/* Categories */
+.categories { display:flex; gap:12px; overflow-x:auto; padding-bottom:8px; }
+.category-chip { padding:10px 20px; background:var(--bg-card); border:1px solid var(--border); border-radius:20px; font-size:14px; font-weight:600; cursor:pointer; white-space:nowrap; transition:all 0.2s; }
+.category-chip:hover, .category-chip.active { background:var(--accent); border-color:var(--accent); }
+
+/* Stats Banner */
+.stats-banner { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding:40px 4%; background:var(--bg-elevated); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.stat-item { text-align:center; }
+.stat-number { font-size:32px; font-weight:900; color:var(--accent); }
+.stat-label { font-size:14px; color:var(--text-muted); margin-top:4px; }
+
+/* Testimonials */
+.testimonial-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.testimonial-card { background:var(--bg-card); border:1px solid var(--border); border-radius:8px; padding:24px; }
+.testimonial-stars { color:var(--yellow); margin-bottom:12px; font-size:16px; }
+.testimonial-text { font-size:14px; line-height:1.7; color:var(--text-muted); margin-bottom:16px; }
+.testimonial-author { display:flex; align-items:center; gap:12px; }
+.testimonial-avatar { width:40px; height:40px; border-radius:50%; background:linear-gradient(135deg,#667eea,#764ba2); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; }
+.testimonial-name { font-size:14px; font-weight:700; }
+.testimonial-role { font-size:12px; color:var(--text-muted); }
+
+/* CTA */
+.cta { text-align:center; padding:80px 4%; background:linear-gradient(180deg,var(--bg) 0%,var(--bg-elevated) 100%); }
+.cta h2 { font-size:36px; font-weight:900; margin-bottom:16px; }
+.cta p { font-size:18px; color:var(--text-muted); margin-bottom:32px; max-width:500px; margin-left:auto; margin-right:auto; }
+
+/* Footer */
+.footer { background:var(--bg-elevated); border-top:1px solid var(--border); padding:60px 4% 24px; }
+.footer-grid { display:grid; grid-template-columns:2fr repeat(3,1fr); gap:48px; margin-bottom:48px; }
+.footer-brand .logo { margin-bottom:16px; }
+.footer-brand p { font-size:14px; color:var(--text-muted); line-height:1.7; max-width:300px; }
+.footer-col h4 { font-size:14px; font-weight:700; margin-bottom:16px; color:var(--text); text-transform:uppercase; letter-spacing:0.5px; }
+.footer-col a { display:block; color:var(--text-muted); text-decoration:none; font-size:14px; margin-bottom:10px; transition:color 0.2s; }
+.footer-col a:hover { color:var(--text); }
+.footer-bottom { border-top:1px solid var(--border); padding-top:24px; display:flex; justify-content:space-between; align-items:center; font-size:13px; color:var(--text-muted); }
+
+/* Cart Sidebar */
+.cart-sidebar { position:fixed; top:0; right:-400px; width:400px; max-width:100%; height:100vh; background:var(--bg-elevated); border-left:1px solid var(--border); z-index:2000; transition:right 0.3s; padding:24px; overflow-y:auto; }
+.cart-sidebar.open { right:0; }
+.cart-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:1999; opacity:0; pointer-events:none; transition:opacity 0.3s; }
+.cart-overlay.open { opacity:1; pointer-events:auto; }
+.cart-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; }
+.cart-header h2 { font-size:20px; }
+.close-cart { background:none; border:none; color:var(--text); font-size:24px; cursor:pointer; }
+.cart-item { display:flex; gap:12px; padding:16px 0; border-bottom:1px solid var(--border); }
+.cart-item-thumb { width:80px; height:50px; background:var(--bg-card); border-radius:4px; flex-shrink:0; }
+.cart-item-info { flex:1; }
+.cart-item-title { font-size:14px; font-weight:600; margin-bottom:4px; }
+.cart-item-price { color:var(--green); font-weight:700; font-size:14px; }
+.remove-item { background:none; border:none; color:var(--text-muted); font-size:18px; cursor:pointer; }
+.remove-item:hover { color:var(--accent); }
+.cart-total { display:flex; justify-content:space-between; align-items:center; padding:20px 0; font-size:18px; font-weight:700; }
+.checkout-btn { width:100%; padding:14px; background:var(--accent); border:none; border-radius:4px; color:var(--text); font-size:16px; font-weight:700; cursor:pointer; }
+.checkout-btn:hover { background:var(--accent-hover); }
+.empty-cart { text-align:center; padding:40px 0; color:var(--text-muted); }
+
+/* Video Modal */
+.video-modal { position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:3000; display:none; align-items:center; justify-content:center; padding:20px; }
+.video-modal.active { display:flex; }
+.video-modal-content { width:100%; max-width:900px; position:relative; }
+.video-player { width:100%; aspect-ratio:16/9; background:var(--bg-card); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:64px; }
+.close-modal { position:absolute; top:-40px; right:0; background:none; border:none; color:var(--text); font-size:32px; cursor:pointer; }
+.video-details { margin-top:20px; }
+.video-details h2 { font-size:24px; margin-bottom:8px; }
+.video-details p { color:var(--text-muted); margin-bottom:16px; }
+.buy-btn { padding:12px 32px; background:var(--accent); border:none; border-radius:4px; color:var(--text); font-size:16px; font-weight:700; cursor:pointer; }
+.buy-btn:hover { background:var(--accent-hover); }
+
+/* Mobile */
+@media(max-width:768px){
+  .hero h1 { font-size:32px; }
+  .nav { display:none; }
+  .stats-banner { grid-template-columns:repeat(2,1fr); }
+  .testimonial-grid { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:repeat(2,1fr); }
+  .video-card { width:200px; }
+  .video-thumb { height:113px; }
+}
 </style>
 </head>
 <body>
 
-<div id="loader"><div class="spin"></div></div>
-
-<header>
-  <h1>ClipBazaar Pro ⚡</h1>
-  <nav>
-    <a href="#clips">Clips</a>
-    <a href="#reviews">Reviews</a>
-    <a href="#contact">Contact</a>
+<!-- Header -->
+<header class="header" id="header">
+  <div class="logo">▶ StreamVault</div>
+  <nav class="nav">
+    <a href="#home">Home</a>
+    <a href="#courses">Courses</a>
+    <a href="#categories">Categories</a>
+    <a href="#pricing">Pricing</a>
   </nav>
+  <div class="header-right">
+    <div class="search-box" id="searchBox">
+      <input type="text" placeholder="Search courses..." id="searchInput">
+      <button onclick="toggleSearch()">🔍</button>
+    </div>
+    <button class="cart-btn" onclick="toggleCart()">🛒<span class="cart-count" id="cartCount">0</span></button>
+    <button class="user-btn">👤</button>
+  </div>
 </header>
 
-<section class="hero">
-  <h2>Royalty-Free 4K Video Clips</h2>
-  <p>Mahadev, Nature, Cinematic B-Roll, AI Loops. Ek baar kharido, lifetime use karo. No Copyright Strike.</p>
-  <button class="btn-primary" onclick="document.getElementById('clips').scrollIntoView()">Browse Clips ↓</button>
-  <div class="badges">
-    <div class="badge">⚡ Instant WhatsApp Delivery</div>
-    <div class="badge">🔒 100% UPI Safe</div>
-    <div class="badge">🎬 4K + 1080p Quality</div>
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge">🔥 Trending Now</div>
+    <h1>Master Any Skill with Premium Video Courses</h1>
+    <p>Learn from industry experts. 10,000+ courses in programming, design, business, and more. Start your journey today.</p>
+    <div class="hero-buttons">
+      <button class="btn btn-primary" onclick="scrollToCourses()">▶ Browse Courses</button>
+      <button class="btn btn-secondary">ℹ Learn More</button>
+    </div>
   </div>
 </section>
 
-<section class="grid" id="clips"></section>
-
-<section class="section" id="reviews">
-  <h3>Creator Reviews ⭐</h3>
-  <div class="testimonials">
-    <div class="testi">"Mahadev clips ka quality 🔥 Reels pe 1M views aaye. Delivery 2 min me." <br><b>- @editor.rahul</b></div>
-    <div class="testi">"Copyright ka tension khatam. 49 me itne mast B-Roll mil gaye." <br><b>- @shorts.adda</b></div>
-    <div class="testi">"Support best hai. Raat 12 baje bhi reply aaya." <br><b>- @aicreator.in</b></div>
+<!-- Categories -->
+<section class="section" id="categories">
+  <div class="section-header">
+    <h2 class="section-title">Browse Categories</h2>
+  </div>
+  <div class="categories">
+    <div class="category-chip active">All</div>
+    <div class="category-chip">Programming</div>
+    <div class="category-chip">Web Development</div>
+    <div class="category-chip">Data Science</div>
+    <div class="category-chip">Design</div>
+    <div class="category-chip">Business</div>
+    <div class="category-chip">Marketing</div>
+    <div class="category-chip">Mobile Dev</div>
   </div>
 </section>
 
-<footer id="contact">
-  <a href="#">Privacy Policy</a> | 
-  <a href="#">Terms</a> | 
-  <a href="https://wa.me/"8511904030">WhatsApp Support</a>
-  <p>© 2026 ClipBazaar Pro. Made in India 🇮🇳</p>
+<!-- Trending Row -->
+<section class="section" id="courses">
+  <div class="section-header">
+    <h2 class="section-title">🔥 Trending Now</h2>
+    <a href="#" class="see-all">See All →</a>
+  </div>
+  <div class="video-row" id="trendingRow">
+    <!-- JS se populate hoga -->
+  </div>
+</section>
+
+<!-- Featured Courses -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">⭐ Featured Courses</h2>
+    <a href="#" class="see-all">See All →</a>
+  </div>
+  <div class="featured-grid" id="featuredGrid">
+    <!-- JS se populate hoga -->
+  </div>
+</section>
+
+<!-- New Releases -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">🆕 New Releases</h2>
+    <a href="#" class="see-all">See All →</a>
+  </div>
+  <div class="video-row" id="newRow">
+    <!-- JS se populate hoga -->
+  </div>
+</section>
+
+<!-- Stats -->
+<div class="stats-banner">
+  <div class="stat-item">
+    <div class="stat-number">10K+</div>
+    <div class="stat-label">Video Courses</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">500+</div>
+    <div class="stat-label">Expert Instructors</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">2M+</div>
+    <div class="stat-label">Students Worldwide</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">4.8★</div>
+    <div class="stat-label">Average Rating</div>
+  </div>
+</div>
+
+<!-- Testimonials -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">💬 What Students Say</h2>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Best investment I ever made! The Python course took me from zero to building real projects in 3 months."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">RK</div>
+        <div>
+          <div class="testimonial-name">Rahul Kumar</div>
+          <div class="testimonial-role">Software Developer @ Google</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"The React course is incredible. Clear explanations, real-world projects, and amazing community support."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background:linear-gradient(135deg,#f093fb,#f5576c)">SP</div>
+        <div>
+          <div class="testimonial-name">Sarah Patel</div>
+          <div class="testimonial-role">Frontend Engineer @ Meta</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Data Science course changed my career. From sales to data analyst in 6 months. Highly recommended!"</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">AM</div>
+        <div>
+          <div class="testimonial-name">Amit Mishra</div>
+          <div class="testimonial-role">Data Analyst @ Amazon</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="pricing">
+  <h2>Start Learning Today</h2>
+  <p>Join 2 million+ students. Get unlimited access to all courses for just $29/month.</p>
+  <button class="btn btn-accent btn-lg" style="padding:16px 40px; font-size:18px;">🚀 Get Started — $29/mo</button>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">▶ StreamVault</div>
+      <p>The world's leading platform for premium video courses. Learn from the best, anytime, anywhere.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="#">Browse Courses</a>
+      <a href="#">Instructors</a>
+      <a href="#">Pricing</a>
+      <a href="#">For Business</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="#">Blog</a>
+      <a href="#">Help Center</a>
+      <a href="#">Community</a>
+      <a href="#">Affiliate</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About</a>
+      <a href="#">Careers</a>
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 StreamVault. All rights reserved.</span>
+    <span>Made with ❤️ for learners worldwide</span>
+  </div>
 </footer>
 
-<script>
-const MY_WHATSAPP = "8511904030"; // <-- Yaha number dal
+<!-- Cart Sidebar -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h2>🛒 Your Cart</h2>
+    <button class="close-cart" onclick="toggleCart()">✕</button>
+  </div>
+  <div id="cartItems">
+    <div class="empty-cart">Your cart is empty</div>
+  </div>
+  <div class="cart-total" id="cartTotal" style="display:none;">
+    <span>Total:</span>
+    <span id="totalPrice">$0</span>
+  </div>
+  <button class="checkout-btn" id="checkoutBtn" style="display:none;" onclick="checkout()">💳 Checkout</button>
+</div>
 
-const videos = [
-  {id:1, title:"Mahadev Jungle Aesthetic", price:49, preview:"https://www.w3schools.com/html/mov_bbb.mp4", res:"4K", dur:"15s"},
-  {id:2, title:"Mountain Clouds Timelapse", price:79, preview:"https://www.w3schools.com/html/movie.mp4", res:"4K", dur:"12s"},
-  {id:3, title:"City Night Cinematic B-Roll", price:99, preview:"https://www.w3schools.com/html/mov_bbb.mp4", res:"4K", dur:"20s"},
-  {id:4, title:"AI Cyberpunk Loop", price:59, preview:"https://www.w3schools.com/html/movie.mp4", res:"1080p", dur:"10s"}
+<!-- Video Modal -->
+<div class="video-modal" id="videoModal">
+  <div class="video-modal-content">
+    <button class="close-modal" onclick="closeVideo()">✕</button>
+    <div class="video-player" id="videoPlayer">▶</div>
+    <div class="video-details" id="videoDetails">
+      <h2 id="modalTitle">Course Title</h2>
+      <p id="modalDesc">Course description goes here...</p>
+      <div style="display:flex; gap:12px; align-items:center;">
+        <span id="modalPrice" style="font-size:24px; font-weight:800; color:var(--green);">$49</span>
+        <button class="buy-btn" onclick="addToCartFromModal()">🛒 Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Data
+const courses = [
+  { id:1, title:"Complete Python Bootcamp", instructor:"Jose Portilla", rating:4.8, reviews:"125K", price:49, oldPrice:199, duration:"22h", category:"Programming", color:"linear-gradient(135deg,#667eea,#764ba2)", badge:"Bestseller" },
+  { id:2, title:"React - The Complete Guide", instructor:"Maximilian S.", rating:4.7, reviews:"98K", price:59, oldPrice:249, duration:"48h", category:"Web Development", color:"linear-gradient(135deg,#61dafb,#282c34)", badge:"Hot" },
+  { id:3, title:"Machine Learning A-Z", instructor:"Kirill Eremenko", rating:4.6, reviews:"87K", price:69, oldPrice:299, duration:"42h", category:"Data Science", color:"linear-gradient(135deg,#f093fb,#f5576c)", badge:"Popular" },
+  { id:4, title:"The Web Developer Bootcamp", instructor:"Colt Steele", rating:4.8, reviews:"200K", price:39, oldPrice:149, duration:"63h", category:"Web Development", color:"linear-gradient(135deg,#11998e,#38ef7d)", badge:"Top Rated" },
+  { id:5, title:"JavaScript: The Advanced Concepts", instructor:"Andrei Neagoie", rating:4.9, reviews:"45K", price:54, oldPrice:219, duration:"25h", category:"Programming", color:"linear-gradient(135deg,#f9d423,#ff4e50)", badge:"New" },
+  { id:6, title:"AWS Certified Solutions Architect", instructor:"Stephane Maarek", rating:4.7, reviews:"76K", price:64, oldPrice:259, duration:"27h", category:"Cloud", color:"linear-gradient(135deg,#ff9900,#232f3e)", badge:"Trending" },
+  { id:7, title:"iOS 17 & Swift 5 - Complete iOS Dev", instructor:"Angela Yu", rating:4.8, reviews:"110K", price:59, oldPrice:249, duration:"60h", category:"Mobile Dev", color:"linear-gradient(135deg,#5fc9f8,#147efb)", badge:"Bestseller" },
+  { id:8, title:"The Complete Digital Marketing", instructor:"Rob Percival", rating:4.5, reviews:"62K", price:44, oldPrice:179, duration:"32h", category:"Marketing", color:"linear-gradient(135deg,#667eea,#764ba2)", badge:"Popular" },
 ];
 
-function render(){
-  const grid = document.getElementById('clips');
-  grid.innerHTML = videos.map(v=>`
-  <div class="card">
-    <video src="${v.preview}" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
-    <div class="card-body">
-      <h3>${v.title}</h3>
-      <div class="meta"><span>${v.res} • ${v.dur}</span><span class="price">₹${v.price}</span></div>
-      <button class="buyBtn" onclick="buyOnWhatsApp('${v.title}', ${v.price})">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.82 11.82 0 0012 0C5.37 0 0 5.37 0 12a11.94 11.94 0 001.61 6L0 24l6.19-1.62A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12a11.82 11.82 0 00-3.48-8.52zM12 22c-1.9 0-3.76-.5-5.4-1.45l-.39-.23l-3.67.96.98-3.56l-.25-.38A9.94 9.94 0 012 12c0-5.52 4.48-10 10-10s10 4.48 10 10s-4.48 10-10 10zm5.24-7.55c-.29-.15-1.7-.84-1.96-.94s-.45-.15-.64.15s-.74.94-.9 1.13s-.33.22-.61.07c-1.72-.86-2.84-1.53-3.97-3.47c-.3-.52.3-.48.86-1.6c.09-.19.05-.35-.02-.5s-.64-1.54-.88-2.11c-.23-.55-.46-.47-.64-.48c-.17-.01-.36-.01-.56-.01s-.5.07-.76.35s-1 .98-1 2.38s1.03 2.76 1.17 2.95s2.02 3.09 4.9 4.33c.68.3 1.21.48 1.63.61c.68.22 1.3.19 1.79.11c.55-.08 1.7-.7 1.94-1.37s.24-1.25.17-1.37c-.07-.12-.26-.19-.55-.34z"/></svg>
-        Buy on WhatsApp
-      </button>
+let cart = [];
+let currentModalCourse = null;
+
+// Render functions
+function renderVideoCard(course, small=false) {
+  return `
+    <div class="video-card" onclick="openVideo(${course.id})">
+      <div class="video-thumb" style="background:${course.color}">
+        <div class="play-icon">▶</div>
+        <span class="video-duration">${course.duration}</span>
+      </div>
+      <div class="video-info">
+        <div class="video-title">${course.title}</div>
+        <div class="video-meta">
+          <span>${course.instructor}</span>
+          <span>•</span>
+          <span class="video-rating">★ ${course.rating}</span>
+        </div>
+        <div class="video-price">$${course.price}</div>
+      </div>
     </div>
-  </div>`).join('');
+  `;
 }
 
-function buyOnWhatsApp(title, price){
-  const msg = `Namaste Bhai 🙏\n\nMujhe ye clip chahiye:\n*Clip:* ${title}\n*Price:* ₹${price}\n\nPayment UPI ID bhejo.`;
-  window.open(`https://wa.me/${MY_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+function renderFeaturedCard(course) {
+  return `
+    <div class="featured-card" onclick="openVideo(${course.id})">
+      <div class="featured-thumb" style="background:${course.color}">
+        <span class="featured-badge">${course.badge}</span>
+      </div>
+      <div class="featured-body">
+        <h3>${course.title}</h3>
+        <p>${course.instructor} • ${course.duration} • ${course.category}</p>
+        <div class="featured-footer">
+          <div class="featured-price">$${course.price} <span>$${course.oldPrice}</span></div>
+          <div class="featured-rating">★ ${course.rating}</div>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
-// Loader hata do 1 sec me
-window.onload = ()=> setTimeout(()=>document.getElementById('loader').style.display='none', 800);
-render();
+// Populate
+document.getElementById('trendingRow').innerHTML = courses.slice(0,6).map(c => renderVideoCard(c)).join('');
+document.getElementById('newRow').innerHTML = courses.slice(2,8).map(c => renderVideoCard(c)).join('');
+document.getElementById('featuredGrid').innerHTML = courses.map(c => renderFeaturedCard(c)).join('');
+
+// Header scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Search
+function toggleSearch() {
+  document.getElementById('searchBox').classList.toggle('active');
+  if(document.getElementById('searchBox').classList.contains('active')) {
+    document.getElementById('searchInput').focus();
+  }
+}
+
+// Cart
+function toggleCart() {
+  document.getElementById('cartSidebar').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('open');
+}
+
+function updateCart() {
+  const count = cart.length;
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartCount').style.display = count > 0 ? 'flex' : 'none';
+  
+  const itemsDiv = document.getElementById('cartItems');
+  if(count === 0) {
+    itemsDiv.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+    document.getElementById('cartTotal').style.display = 'none';
+    document.getElementById('checkoutBtn').style.display = 'none';
+    return;
+  }
+  
+  itemsDiv.innerHTML = cart.map((item,i) => `
+    <div class="cart-item">
+      <div class="cart-item-thumb" style="background:${item.color}"></div>
+      <div class="cart-item-info">
+        <div class="cart-item-title">${item.title}</div>
+        <div class="cart-item-price">$${item.price}</div>
+      </div>
+      <button class="remove-item" onclick="removeFromCart(${i})">🗑</button>
+    </div>
+  `).join('');
+  
+  const total = cart.reduce((sum,item) => sum + item.price, 0);
+  document.getElementById('totalPrice').textContent = '$' + total;
+  document.getElementById('cartTotal').style.display = 'flex';
+  document.getElementById('checkoutBtn').style.display = 'block';
+}
+
+function addToCartFromModal() {
+  if(currentModalCourse) {
+    cart.push(currentModalCourse);
+    updateCart();
+    closeVideo();
+    toggleCart();
+  }
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  updateCart();
+}
+
+function checkout() {
+  alert('Checkout: Total $' + cart.reduce((sum,item) => sum + item.price, 0) + '\n\nPayment integration yahan lagega!');
+}
+
+// Video Modal
+function openVideo(id) {
+  const course = courses.find(c => c.id === id);
+  if(!course) return;
+  currentModalCourse = course;
+  
+  document.getElementById('modalTitle').textContent = course.title;
+  document.getElementById('modalDesc').textContent = `By ${course.instructor} • ${course.duration} • ${course.category} • ★ ${course.rating} (${course.reviews} reviews)`;
+  document.getElementById('modalPrice').textContent = '$' + course.price;
+  document.getElementById('videoPlayer').style.background = course.color;
+  
+  document.getElementById('videoModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideo() {
+  document.getElementById('videoModal').classList.remove('active');
+  document.body.style.overflow = '';
+  currentModalCourse = null;
+}
+
+function scrollToCourses() {
+  document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Category filter
+document.querySelectorAll('.category-chip').forEach(chip => {
+  chip.addEventListener('click', function() {
+    document.querySelectorAll('.category-chip').forEach(c => c.classList.remove('active'));
+    this.classList.add('active');
+    
+    const cat = this.textContent;
+    const filtered = cat === 'All' ? courses : courses.filter(c => c.category === cat);
+    document.getElementById('featuredGrid').innerHTML = filtered.map(c => renderFeaturedCard(c)).join('');
+  });
+});
+
+// Close modal on escape
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape') {
+    closeVideo();
+    document.getElementById('cartSidebar').classList.remove('open');
+    document.getElementById('cartOverlay').classList.remove('open');
+  }
+});
 </script>
+
 </body>
 </html>
